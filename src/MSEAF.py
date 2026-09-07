@@ -285,6 +285,9 @@ class MSEAF(nn.Module):
 
         # Nhánh thứ 5:
         # giữ original-resolution feature
+
+        self.original_branch = nn.Conv2d( in_channels=channels, out_channels=channels, kernel_size=3, stride=1, padding=1 )
+        """
         self.original_branch = nn.Sequential(
             # Depthwise 3x3
             nn.Conv2d(
@@ -305,6 +308,7 @@ class MSEAF(nn.Module):
                 padding=0
             )
         )
+        """
         # Sau concat:
         # 4*(C/4) + C = 2C
         self.dsm = DSM(
